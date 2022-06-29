@@ -1,0 +1,31 @@
+{
+  "name": "geosm_carto",
+  "version": "1.0.0",
+  "description": "manage qgis server",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeOsmFamily/geosm_carto_mvp.git"
+  },
+  "keywords": [
+    "carto",
+    "qgis",
+    "osm",
+    "postgres"
+  ],
+  "author": "Boris Gautier & Tatiana Ngassa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeOsmFamily/geosm_carto_mvp/issues"
+  },
+  "homepage": "https://github.com/GeOsmFamily/geosm_carto_mvp#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "ogr2ogr": "^1.3.0",
+    "pg": "^8.7.3",
+    "python-shell": "^3.0.1"
+  }
+}
