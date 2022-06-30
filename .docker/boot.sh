@@ -1,4 +1,7 @@
 #!/bin/bash
+host=$(/sbin/ip route|awk '/default/ { print $3 }')
+echo ${host}
+
 a2dissite 000-default.conf 
 a2ensite service.conf
 service apache2 reload

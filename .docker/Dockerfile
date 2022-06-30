@@ -30,9 +30,20 @@ RUN npm install -g forever
 RUN rm -rf /home/root/carto/ || true
 WORKDIR /home/root/
 RUN git clone https://github.com/GeOsmFamily/geosm_mvp_carto.git/ ./carto
-RUN cp /home/root/carto/.docker/boot.sh /home/root/
 WORKDIR /home/root/carto/
 RUN npm install
 
-RUN ["chmod", "+x", "/home/root/boot.sh"]
+RUN host=$(/sbin/ip route|awk '/default/ { print $3 }')
+RUN echo ${host}
+
+RUN a2dissite 000-default.conf 
+RUN a2ensite service.conf
+RUN service apache2 reload
+
+RUN chown www-data:www-data /var/www/html/
+RUN chown www-data:www-data /home/root/
+RUN chmod -R 777 /var/www/html/
+RUN chmod -R 777 /home/root/
+
+RUN cd /home/root/carto/ && forever start  -a --minUptime 5000  --spinSleepTime 5000 -l process.log -o out.log -e err.log index.js
 
