@@ -3,7 +3,12 @@ let bd_param = JSON.parse(fs.readFileSync('env.json'))['database'];
 let bd_osm_param = JSON.parse(fs.readFileSync('env.json'))['database_osm'];
 let qgis = JSON.parse(fs.readFileSync('env.json'))['qgis'];
 
+
 var ogr2ogr = require('ogr2ogr');
+
+module.exports = {
+    executeOgr2Ogr
+}
 
 function executeOgr2Ogr(sql, instance, thematique_name, thematique_id) {
     var save_path = qgis['path'] + '/' + instance + '/' + thematique_name + thematique_id + '.gpkg';
@@ -23,6 +28,4 @@ function executeOgr2Ogr(sql, instance, thematique_name, thematique_id) {
     return save_path;
 }
 
-module.exports = {
-    executeOgr2Ogr
-}
+

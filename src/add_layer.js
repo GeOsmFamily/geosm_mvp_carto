@@ -1,5 +1,9 @@
 var { PythonShell } = require('python-shell');
 
+module.exports = {
+    addlayer
+}
+
 function addlayer(qgis_project_name, path_qgis, gpkg_path, geometry, identifiant, wms_type, path_logo = null, color = null, path_data = null, path_qml = null) {
     var option;
     var results;
@@ -58,6 +62,3 @@ function addlayer(qgis_project_name, path_qgis, gpkg_path, geometry, identifiant
     return results;
 }
 
-module.exports = {
-    addlayer
-}
