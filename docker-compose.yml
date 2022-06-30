@@ -10,6 +10,6 @@ services:
     tty: true
     volumes:
       - ./:/var/www/html
-      - ./docker/vhost.conf:/etc/apache2/sites-available/service.conf
+      - ./docker/service.conf:/etc/apache2/sites-available/service.conf
     ports:
       - "9090:80"

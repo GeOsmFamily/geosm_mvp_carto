@@ -1,4 +1,5 @@
 const express = require('express');
+var http = require('http');
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,7 +38,9 @@ app.post('/addlayer', (req, res) => {
 }
 );
 
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000!');
+var httpServer = http.createServer(app);
+
+httpServer.listen(3000, () => {
+    console.log('Server listening on port 3000');
 }
 );
