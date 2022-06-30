@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      - ./:/var/www/html
+      - ./var/www/html:/var/www/html
       - ./docker/service.conf:/etc/apache2/sites-available/service.conf
     ports:
       - "9090:80"

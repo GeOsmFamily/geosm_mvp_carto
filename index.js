@@ -4,8 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const { executeOgr2Ogr } = require('./src/create_gpkg.js');
-const { addlayer } = require('./src/add_layer.js');
+const executeOgr2Ogr = require('./src/create_gpkg');
+const addlayer = require('./src/add_layer');
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -17,7 +17,7 @@ app.post('/creategpkg', (req, res) => {
     var instance = req.body.instance;
     var thematique_name = req.body.thematique_name;
     var thematique_id = req.body.thematique_id;
-    var save_path = executeOgr2Ogr(sql, instance, thematique_name, thematique_id);
+    var save_path = executeOgr2Ogr.executeOgr2Ogr(sql, instance, thematique_name, thematique_id);
     res.send({ "gpkg": save_path });
 }
 );
@@ -33,7 +33,7 @@ app.post('/addlayer', (req, res) => {
     var color = req.body.color;
     var path_data = req.body.path_data;
     var path_qml = req.body.path_qml;
-    var result = addlayer(qgis_project_name, path_qgis, gpkg_path, geometry, identifiant, wms_type, path_logo, color, path_data, path_qml);
+    var result = addlayer.addlayer(qgis_project_name, path_qgis, gpkg_path, geometry, identifiant, wms_type, path_logo, color, path_data, path_qml);
     res.send({ "message": result });
 }
 );
