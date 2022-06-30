@@ -1,0 +1,15 @@
+version: "3"
+services:
+  geosm_carto:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: geosm_carto
+    container_name: geosm_carto
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./:/var/www/html
+      - ./docker/vhost.conf:/etc/apache2/sites-available/service.conf
+    ports:
+      - "9090:80"
