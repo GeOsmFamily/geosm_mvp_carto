@@ -10,17 +10,34 @@ function addlayer(qgis_project_name, path_qgis, gpkg_path, geometry, identifiant
 
     if (wms_type == 'osm') {
         if (geometry == 'point') {
-            option = {
-                mode: 'text',
-                pythonPath: 'python3',
-                args: [qgis_project_name, path_qgis, gpkg_path, 'point', identifiant, path_logo, color]
-            };
+            if (color !== null) {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, gpkg_path, 'point', identifiant, path_logo, color]
+                };
+            } else {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, gpkg_path, 'point', identifiant, path_qml]
+                };
+            }
+
         } else {
-            option = {
-                mode: 'text',
-                pythonPath: 'python3',
-                args: [qgis_project_name, path_qgis, gpkg_path, geometry, identifiant, path_qml]
-            };
+            if (color !== null) {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, gpkg_path, geometry, identifiant, path_logo, color]
+                };
+            } else {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, gpkg_path, geometry, identifiant, path_qml]
+                };
+            }
         }
 
         PythonShell.run('./scripts/add_layer.py', option, function (err, results) {
@@ -32,17 +49,34 @@ function addlayer(qgis_project_name, path_qgis, gpkg_path, geometry, identifiant
         });
     } else {
         if (geometry == 'point') {
-            option = {
-                mode: 'text',
-                pythonPath: 'python3',
-                args: [qgis_project_name, path_qgis, path_data, 'point', identifiant, path_logo, color]
-            };
+            if (color !== null) {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, path_data, 'point', identifiant, path_logo, color]
+                };
+            } else {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, path_data, 'point', identifiant, path_qml]
+                };
+            }
+
         } else {
-            option = {
-                mode: 'text',
-                pythonPath: 'python3',
-                args: [qgis_project_name, path_qgis, path_data, geometry, identifiant, path_qml]
-            };
+            if (color !== null) {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, path_data, geometry, identifiant, path_logo, color]
+                };
+            } else {
+                option = {
+                    mode: 'text',
+                    pythonPath: 'python3',
+                    args: [qgis_project_name, path_qgis, path_data, geometry, identifiant, path_qml]
+                }
+            }
 
             PythonShell.run('./scripts/add_layer.py', option, function (err, results) {
                 if (err) {
