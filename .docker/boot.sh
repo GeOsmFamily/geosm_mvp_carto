@@ -10,4 +10,4 @@ service apache2 reload
 chown www-data:www-data /var/www/html
 chmod -R 777 /var/www/html/
 
-cd /home/root/carto/ && forever start  -a --minUptime 5000  --spinSleepTime 5000 -l process.log -o out.log -e err.log index.js
+cd /var/www/html/carto/ && forever start  -a --minUptime 5000  --spinSleepTime 5000 -l process.log -o out.log -e err.log index.js
