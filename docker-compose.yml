@@ -9,7 +9,11 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      - ./var/www/:/var/www/
-      - ./docker/service.conf:/etc/apache2/sites-available/service.conf
+      - 'carto-data:/var/www/html'
     ports:
       - "9090:80"
+
+volumes:
+    carto-data:
+        driver: local
+    
