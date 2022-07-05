@@ -31,5 +31,4 @@ RUN cd /var/www/html/carto && npm install
 
 COPY .docker/service.conf /etc/apache2/sites-available/service.conf
 
-RUN ["chmod", "+x", "/var/www/html/carto/boot.sh"]
 
